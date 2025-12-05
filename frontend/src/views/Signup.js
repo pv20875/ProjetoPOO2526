@@ -66,13 +66,7 @@ export default function SignupPage() {
         </div>
         <div className="position-relative form-floating">
           <FontAwesomeIcon
-            style={{
-              position: "absolute",
-              right: "10px",
-              top: "21px",
-              zIndex: "1000",
-              cursor: "pointer",
-            }}
+            className="btn-password"
             icon={showPassword ? faEyeSlash : faEye}
             onClick={() => setShowPassword(!showPassword)}
           />
@@ -87,10 +81,10 @@ export default function SignupPage() {
           <label>Palavra-passe</label>
         </div>
         <div className="d-grid gap-1">
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-primary">
             Criar conta
           </button>
-          <Link to="/login" className="btn btn-outline-success">
+          <Link to="/login" className="btn btn-outline-primary">
             Entrar
           </Link>
         </div>

@@ -3,6 +3,5 @@
 .DS_Store
 /frontend/node_modules
 /frontend/build
-/backend/Data
 __pycache__
 .bat

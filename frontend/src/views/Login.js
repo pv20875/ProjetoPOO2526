@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../services/auth/context";
+import { AuthContext } from "../services/auth_context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -38,8 +38,8 @@ export default function LoginPage() {
 
   return (
     <div className="auth-container">
-      <h3 className="fw-bold">CoinLogger</h3>
-      <p className="mb-5">Plataforma de Gestão de Finanças Pessoais</p>
+      <h3 className="fw-bold">Gestão de Finanças Pessoais</h3>
+      <p className="mb-5">A sua plataforma segura e de confiança</p>
       <form onSubmit={Login} className="auth-form gap-3">
         <div className="form-floating">
           <input
@@ -54,13 +54,7 @@ export default function LoginPage() {
         </div>
         <div className="position-relative form-floating">
           <FontAwesomeIcon
-            style={{
-              position: "absolute",
-              right: "10px",
-              top: "21px",
-              zIndex: "1000",
-              cursor: "pointer",
-            }}
+            className="btn-password"
             icon={showPassword ? faEyeSlash : faEye}
             onClick={() => setShowPassword(!showPassword)}
           />
@@ -75,10 +69,10 @@ export default function LoginPage() {
           <label>Palavra-passe</label>
         </div>
         <div className="d-grid gap-1">
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-primary">
             Entrar
           </button>
-          <Link to="/signup" className="btn btn-outline-success">
+          <Link to="/signup" className="btn btn-outline-primary">
             Criar conta
           </Link>
         </div>

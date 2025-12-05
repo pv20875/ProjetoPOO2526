@@ -51,7 +51,13 @@ export default function Utilizadores() {
         <tbody className="align-middle">
           {items?.map((data) => (
             <tr key={data.id}>
-              <th scope="row">{data.id}</th>
+              <td
+                title={data.id}
+                className="text-truncate"
+                style={{ maxWidth: "100px" }}
+              >
+                {data.id}
+              </td>
               <td className="text-truncate">{data.nome}</td>
               <td>{data.email}</td>
               <td>{data.perfil}</td>

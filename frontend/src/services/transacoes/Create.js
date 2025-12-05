@@ -1,11 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import endpoint from "../../config/endpoint";
-import FetchCategorias from "../categorias/Fetch";
+import FetchCategorias from "../categorias/fetch";
 
 export default function CreateTransacao() {
   // lista de categorias (importada)
-  const { items } = FetchCategorias();
+  const { categorias } = FetchCategorias();
   // parametros da transação
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState(0);
@@ -91,7 +91,7 @@ export default function CreateTransacao() {
             required
           >
             <option value="">Selecionar opção</option>
-            {items?.map((data) => (
+            {categorias?.map((data) => (
               <option key={data.id} value={data.nome}>
                 {data.nome}
               </option>

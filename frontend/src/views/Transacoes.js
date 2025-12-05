@@ -1,21 +1,43 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import FetchTransacoes from "../services/transacoes/Fetch";
-import Delete from "../services/transacoes/Delete";
+import Fetch from "../services/transacoes/fetch";
+import Delete from "../services/transacoes/delete";
+import FetchCategorias from "../services/categorias/fetch";
 
 export default function Transacoes() {
-  const { items, fetchData } = FetchTransacoes();
+  const { categorias } = FetchCategorias();
+  const { items, fetchData, ct, setCt } = Fetch();
 
   return (
     <>
-      <div className="d-flex justify-content-end">
-        <Link to="/transacoes/registar" className="btn btn-success">
-          Registar transação
-        </Link>
+      <div className="row g-3 align-items-center">
+        <div className="col-12 col-md-4 col-lg-3">
+          {/** Filtragem das transações por categoria */}
+          <select
+            value={ct}
+            onChange={(e) => setCt(e.target.value)}
+            className="form-select"
+          >
+            <option value="">Todas as categorias</option>
+            {categorias?.map((data) => (
+              <option key={data.id} value={data.nome}>
+                {data.nome}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-12 col-md-4 col-lg-3 ms-auto text-md-end">
+          {/** Hiperligação para a página de registo */}
+          <Link to="/transacoes/registar" className="btn btn-success">
+            Registar transação
+          </Link>
+        </div>
       </div>
-      <div className="table-responsive">
+      <div className="mt-3 table-responsive">
         <table className="table table-light table-bordered caption-top">
+          {/** Nº de transações registadas */}
+          {/** apenas são contadas as transações registadas pelo utilizador autenticado */}
           <caption>
             Transações registadas: <strong>{items?.length || 0}</strong>
           </caption>
@@ -31,9 +53,16 @@ export default function Transacoes() {
             </tr>
           </thead>
           <tbody className="align-middle">
+            {/** Detalhes das transações */}
             {items?.map((data) => (
               <tr key={data.id}>
-                <th scope="row">{data.id}</th>
+                <td
+                  title={data.id}
+                  className="text-truncate"
+                  style={{ maxWidth: "100px" }}
+                >
+                  {data.id}
+                </td>
                 <td className="text-truncate" title={data.descricao}>
                   {data.descricao}
                 </td>
@@ -49,9 +78,11 @@ export default function Transacoes() {
                 <td>{data.tipo}</td>
                 <td>
                   <div className="d-flex align-items-center gap-3">
+                    {/** Atualizar */}
                     <Link to={`/transacoes/atualizar/${data.id}`}>
                       <FontAwesomeIcon icon={faPenToSquare} className="fs-4" />
                     </Link>
+                    {/** Apagar */}
                     <Link
                       onClick={() => Delete(data.id, fetchData)}
                       className="link-danger"

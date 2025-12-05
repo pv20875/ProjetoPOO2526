@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthContext } from "./services/auth/context";
+import { AuthContext } from "./services/auth_context";
 import Sidebar from "./views/components/Sidebar";
 import Login from "./views/Login";
 import Signup from "./views/Signup";

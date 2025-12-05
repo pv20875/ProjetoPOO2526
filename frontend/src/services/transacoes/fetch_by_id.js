@@ -29,7 +29,7 @@ export default function FetchTransacaoById() {
       .catch((err) => {
         if (err.response) {
           alert(
-            `Ocorreu um erro ao obter a transação selecionada (${
+            `Ocorreu um erro ao obter a transação (${
               err.response.status || null
             }): ${err.response.data?.error || "Desconhecido"}`
           );

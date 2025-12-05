@@ -19,17 +19,25 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+.card,
 .form-control,
 .form-select,
 .btn {
   border-radius: 0;
+}
+.btn-password {
+  position: absolute;
+  right: 10px;
+  top: 21px;
+  z-index: 1000;
+  cursor: pointer;
 }
 main,
 header {
   transition: 0.3s ease-in-out;
 }
 header {
-  z-index: 999999999999;
+  z-index: 999999999999 !important;
   position: fixed;
   top: 0;
   left: 0;

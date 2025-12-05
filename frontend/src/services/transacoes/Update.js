@@ -1,7 +1,7 @@
 import axios from "axios";
 import endpoint from "../../config/endpoint";
-import FetchCategorias from "../categorias/Fetch";
-import FetchTransacaoById from "./FetchById";
+import FetchCategorias from "../categorias/fetch";
+import FetchTransacaoById from "./fetch_by_id";
 
 export default function UpdateTransacao() {
   const { items } = FetchCategorias();

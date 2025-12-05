@@ -1,20 +1,17 @@
-import { Link } from "react-router-dom";
-import FetchCategorias from "../services/categorias/Fetch";
+import Fetch from "../services/categorias/fetch";
+import Create from "../services/categorias/create";
 
 export default function Categorias() {
-  const { items } = FetchCategorias();
+  const { categorias, fetchData } = Fetch();
 
   return (
     <>
-      <div className="d-flex justify-content-end">
-        <Link to="/categorias/registar" className="btn btn-success">
-          Registar categoria
-        </Link>
-      </div>
-      <div className="table-responsive">
+      {/** Formulário de registo de categorias */}
+      <Create fetchData={fetchData} />
+      <div className="mt-3 table-responsive">
         <table className="table table-light table-bordered caption-top">
           <caption>
-            Categorias registadas: <strong>{items?.length || 0}</strong>
+            Categorias registadas: <strong>{categorias?.length || 0}</strong>
           </caption>
           <thead className="table-secondary">
             <tr>
@@ -24,9 +21,15 @@ export default function Categorias() {
             </tr>
           </thead>
           <tbody className="align-middle">
-            {items?.map((data) => (
+            {categorias?.map((data) => (
               <tr key={data.id}>
-                <th scope="row">{data.id}</th>
+                <td
+                  title={data.id}
+                  className="text-truncate"
+                  style={{ maxWidth: "100px" }}
+                >
+                  {data.id}
+                </td>
                 <td>{data.nome}</td>
                 <td className="text-truncate">{data.descricao}</td>
               </tr>

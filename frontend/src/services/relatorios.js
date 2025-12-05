@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import endpoint from "../../config/endpoint";
+import endpoint from "../config/endpoint";
 
-export default function Fetch() {
-  const [items, setItems] = useState([]);
-  const [ct, setCt] = useState("");
+export default function Relatorios() {
+  const [data, setData] = useState({});
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
-  const fetchData = async (categoria = ct) => {
+  const Calcular = async (e) => {
+    if (e) e.preventDefault();
+
     try {
       const res = await axios.get(
-        `${endpoint}/transacoes/list?categoria=${categoria}`,
+        `${endpoint}/relatorios?start_date=${startDate}&end_date=${endDate}`,
         {
           withCredentials: true,
         }
       );
 
-      setItems(res.data);
+      setData(res.data);
     } catch (err) {
       if (err.response) {
         alert(
-          `Ocorreu um erro ao obter as transações (${
+          `Ocorreu um erro ao calcular os relatórios (${
             err.response.status || null
           }): ${err.response.data?.error || "Desconhecido"}`
         );
@@ -34,9 +37,16 @@ export default function Fetch() {
   };
 
   useEffect(() => {
-    fetchData(ct);
+    Calcular();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ct]);
+  }, []);
 
-  return { items, fetchData, ct, setCt };
+  return {
+    Calcular,
+    data,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+  };
 }

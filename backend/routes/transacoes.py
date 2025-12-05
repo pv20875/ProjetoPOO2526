@@ -33,8 +33,8 @@ def list_transactions():
                 if perfil == "Administrador" or t["utilizadorId"] == user_id
                 # filtrar transações por categoria:
                 # se não for fornecida nenhuma categoria, incluir todas
-                # caso for, incluir apenas as transações que têm categoria válida de acordo com a lista "Categorias" (definidia como "ct")
-                if not categoria or any(c["nome"] == t["categoria"] for c in ct)
+                # caso for, incluir apenas as transações que têm categoria válida
+                if not categoria or t["categoria"] == categoria
             ]
         ),
         200,
@@ -181,7 +181,7 @@ def delete_transaction(tr_id):
     if not transacao:
         return jsonify({"error": "Transação não encontrada!"}), 404
 
-    if transacao["utilizadorId"] != user_id or perfil != "Administrador":
+    if transacao["utilizadorId"] != user_id and perfil != "Administrador":
         return jsonify({"error": "Não tem permissão para apagar esta transação!"}), 403
 
     # remover transação da memória e do ficheiro

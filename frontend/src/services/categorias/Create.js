@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import endpoint from "../../config/endpoint";
 
-export default function CreateCategoria() {
+export default function CreateCategoria({ fetchData }) {
   // parametros da categoria
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
@@ -19,6 +19,11 @@ export default function CreateCategoria() {
 
       if (res.data) {
         alert(res.data?.msg);
+        // limpa os campos
+        setNome("");
+        setDescricao("");
+        // recarrega a lista
+        fetchData();
       }
     } catch (err) {
       if (err.response) {
@@ -38,40 +43,32 @@ export default function CreateCategoria() {
   };
 
   return (
-    <div className="d-flex justify-content-center py-5 px-3 bg-white border border-1">
-      <form
-        onSubmit={Create}
-        style={{ maxWidth: "550px" }}
-        className="auth-form gap-3"
-      >
-        <div className="form-floating">
-          <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            className="form-control"
-            placeholder="Nome"
-            required
-          />
-          <label>Nome</label>
-        </div>
-        <div className="form-floating">
-          <textarea
-            type="text"
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
-            className="form-control"
-            placeholder="Descrição"
-            required
-          />
-          <label>Descrição</label>
-        </div>
-        <div className="d-flex justify-content-end">
-          <button type="submit" className="btn btn-success">
-            Registar categoria
-          </button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={Create} className="row g-2 align-items-center">
+      <div className="col-md-5">
+        <input
+          type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          className="form-control"
+          placeholder="Nome"
+          required
+        />
+      </div>
+      <div className="col-md-5">
+        <input
+          type="text"
+          value={descricao}
+          onChange={(e) => setDescricao(e.target.value)}
+          className="form-control"
+          placeholder="Descrição"
+          required
+        />
+      </div>
+      <div className="col-md-2 d-grid">
+        <button type="submit" className="btn btn-success">
+          Registar categoria
+        </button>
+      </div>
+    </form>
   );
 }

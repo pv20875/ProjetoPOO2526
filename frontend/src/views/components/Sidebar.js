@@ -1,22 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
-import useResponsiveMenu from "../../useResponsiveMenu";
-import { AuthContext } from "../../services/auth/context";
+import { AuthContext } from "../../services/auth_context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 // páginas
 import Dashboard from "../Dashboard";
 import Transacoes from "../Transacoes";
-import CreateTransacao from "../../services/transacoes/Create";
-import UpdateTransacao from "../../services/transacoes/Update";
+import CreateTransacao from "../../services/transacoes/create";
+import UpdateTransacao from "../../services/transacoes/update";
 import Categorias from "../Categorias";
-import CreateCategoria from "../../services/categorias/Create";
 import Utilizadores from "../Utilizadores";
 
 export default function Sidebar({ presentUser }) {
   const { logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(true);
-  useResponsiveMenu(setIsOpen);
+
+  // Responsivo da Sidebar
+  // mantém-a aberta se a janela do browser for maior que 900px
+  useEffect(
+    () => (window.onresize = () => setIsOpen(window.innerWidth > 900)),
+    [setIsOpen]
+  );
 
   return (
     <>
@@ -44,8 +48,10 @@ export default function Sidebar({ presentUser }) {
       >
         <div className="d-flex flex-column">
           <div className="d-flex flex-column justify-content-center">
-            <h5 className="text-truncate">Bem-vindo, {presentUser.nome}</h5>
-            <small>{presentUser.perfil}</small>
+            <h5 className="text-truncate" title={presentUser.nome || "n/a"}>
+              Bem-vindo, <strong>{presentUser.nome || "n/a"}</strong>
+            </h5>
+            <small>{presentUser.perfil || "n/a"}</small>
           </div>
           <hr />
           <div className="nav-menu">
@@ -65,6 +71,7 @@ export default function Sidebar({ presentUser }) {
                   Categorias
                 </NavLink>
               </li>
+              {/** exibe a hiperligação se o utilizador autenticado for o administrador */}
               {presentUser?.perfil?.includes("Administrador") && (
                 <li className="nav-item">
                   <NavLink to="/utilizadores" className="nav-link">
@@ -100,8 +107,8 @@ export default function Sidebar({ presentUser }) {
             />
             {/** Categorias */}
             <Route path="/categorias" element={<Categorias />} />
-            <Route path="/categorias/registar" element={<CreateCategoria />} />
             {/** Utilizadores */}
+            {/** exibe a rota se o utilizador autenticado for o administrador */}
             {presentUser?.perfil?.includes("Administrador") && (
               <Route path="/utilizadores" element={<Utilizadores />} />
             )}
