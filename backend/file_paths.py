@@ -1,7 +1,7 @@
 import os
 import json
 
-FOLDER = os.path.join(os.path.dirname(__file__), "Data")
+FOLDER = os.path.join(os.path.dirname(__file__), "data")
 # utilizadores
 FILE1 = os.path.join(FOLDER, "Utilizadores.json")
 

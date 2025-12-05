@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
 from extensions import bcrypt, jwt
-from routes.auth import auth
-from routes.transacoes import tr_bp
-from routes.categorias import ct_bp
 
-# from routes.relatorios import rl_bp
+# blueprints/rotas
+from routes.auth import auth_bp
+from routes.transacoes import transacoes_bp
+from routes.categorias import categorias_bp
+from routes.relatorios import relatorios_bp
 
 # criar a aplicação
 app = Flask(__name__)
@@ -25,13 +26,14 @@ app.config.update(
     }
 )
 
-bcrypt.init_app(app)  # inicializar bcrypt
-jwt.init_app(app)  # inicializar JWT
+bcrypt.init_app(app)  # iniciar bcrypt
+jwt.init_app(app)  # iniciar JWT
 
-# registar blueprints (rotas)
-app.register_blueprint(auth)
-app.register_blueprint(tr_bp)
-app.register_blueprint(ct_bp)
+# registar blueprints/rotas
+app.register_blueprint(auth_bp)
+app.register_blueprint(transacoes_bp)
+app.register_blueprint(categorias_bp)
+app.register_blueprint(relatorios_bp)
 
 # iniciar o servidor
 if __name__ == "__main__":

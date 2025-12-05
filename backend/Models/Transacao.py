@@ -1,9 +1,6 @@
-from filePaths import tr
-
-
 class Transacao:
-    def __init__(self, descricao, valor, data, categoria, tipo, utilizadorId):
-        self.id = len(tr) + 1
+    def __init__(self, id, descricao, valor, data, categoria, tipo, utilizadorId):
+        self.id = id
         self.descricao = descricao
         self.valor = valor
         self.data = data

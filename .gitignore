@@ -6,4 +6,3 @@
 /backend/Data
 __pycache__
 .bat
-/backend/routes/relatorios.py

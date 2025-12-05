@@ -1,9 +1,6 @@
-from filePaths import ct
-
-
 class Categoria:
-    def __init__(self, nome, descricao):
-        self.id = len(ct) + 1
+    def __init__(self, id, nome, descricao):
+        self.id = id
         self.nome = nome
         self.descricao = descricao
 

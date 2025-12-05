@@ -1,27 +1,28 @@
+import uuid
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import (
     jwt_required,
 )
-from Models.Categoria import Categoria
-from filePaths import ct, save_ct
+from models.Categoria import Categoria
+from file_paths import ct, save_ct
 
-ct_bp = Blueprint("ct", __name__)
+categorias_bp = Blueprint("categorias_bp", __name__)
 
 
-# Listagem
-@ct_bp.route("/categorias/list", methods=["GET"])
+# Listagem das categorias
+@categorias_bp.route("/categorias/list", methods=["GET"])
 @jwt_required()
-def list_ct():
+def list_categories():
+    # retornar todas as categorias guardadas no ficheiro
     return jsonify(ct), 200
 
 
 # Criar
-@ct_bp.route("/categorias/create", methods=["POST"])
+@categorias_bp.route("/categorias/create", methods=["POST"])
 @jwt_required()
-def create_ct():
+def create_category():
     data = request.get_json()
-    nome = data.get("nome")
-    descricao = data.get("descricao")
+    nome, descricao = data.get("nome"), data.get("descricao")
 
     if not nome or not descricao:
         return jsonify({"error": "Não podem existir campos vazios!"}), 400
@@ -30,12 +31,13 @@ def create_ct():
     if nome in [c["nome"] for c in ct]:
         return jsonify({"error": "A categoria introduzida já existe!"}), 400
 
-    ct_data = Categoria(
+    categoria = Categoria(
+        id=str(uuid.uuid4()),
         nome=nome,
         descricao=descricao,
     )
 
-    ct.append(ct_data.to_dict())
+    ct.append(categoria.to_dict())
     save_ct(ct)
 
     return jsonify({"msg": "Categoria registada com sucesso!"}), 201
