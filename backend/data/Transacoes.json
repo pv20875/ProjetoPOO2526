@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": "3b3c15a7-bf5d-4c67-ab83-5a8908e05d43",
+    "descricao": "Build completa PC",
+    "valor": 1150,
+    "data": "2025-12-05",
+    "categoria": "Inform\u00e1tica",
+    "tipo": "Despesa",
+    "utilizadorId": "f2b6dbf6-1e9c-43f2-9ad0-29538901c9cf"
+  },
+  {
+    "id": "d6c7c4ee-ffa5-4240-ad94-e3c8f268bc3a",
+    "descricao": "Port\u00e1til Acer",
+    "valor": 899,
+    "data": "2025-12-10",
+    "categoria": "Inform\u00e1tica",
+    "tipo": "Despesa",
+    "utilizadorId": "f2b6dbf6-1e9c-43f2-9ad0-29538901c9cf"
+  },
+  {
+    "id": "138a5b21-3e6e-4d72-b968-9464ce6e784f",
+    "descricao": "Apartamento Aveiro - Beatriz",
+    "valor": 1000,
+    "data": "2025-11-01",
+    "categoria": "Rendas",
+    "tipo": "Receita",
+    "utilizadorId": "f2b6dbf6-1e9c-43f2-9ad0-29538901c9cf"
+  },
+  {
+    "id": "f780e3e1-0e51-4a41-b8fb-b91e6462e06b",
+    "descricao": "Apartamento Lisboa - Carlos",
+    "valor": 1500,
+    "data": "2025-11-01",
+    "categoria": "Rendas",
+    "tipo": "Receita",
+    "utilizadorId": "f2b6dbf6-1e9c-43f2-9ad0-29538901c9cf"
+  },
+  {
+    "id": "443a74b7-beb9-4f16-88c7-a207d80f21b5",
+    "descricao": "Venda jogo DOOM Eternal para a PS5",
+    "valor": 200,
+    "data": "2025-04-09",
+    "categoria": "Vendas",
+    "tipo": "Receita",
+    "utilizadorId": "f2b6dbf6-1e9c-43f2-9ad0-29538901c9cf"
+  }
+]

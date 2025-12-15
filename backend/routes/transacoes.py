@@ -42,7 +42,7 @@ def list_transactions():
 
 
 # Obter por id
-@transacoes_bp.route("/transacoes/transacao/<int:tr_id>", methods=["GET"])
+@transacoes_bp.route("/transacoes/transacao/<string:tr_id>", methods=["GET"])
 @jwt_required()
 def fetchById_transaction(tr_id):
     # obter a transação selecionada através do id
@@ -108,7 +108,7 @@ def create_transaction():
 
 
 # Editar
-@transacoes_bp.route("/transacoes/update/<int:tr_id>", methods=["PATCH"])
+@transacoes_bp.route("/transacoes/update/<string:tr_id>", methods=["PATCH"])
 @jwt_required()
 def update_transacao(tr_id):
     identity = json.loads(get_jwt_identity())
@@ -130,7 +130,7 @@ def update_transacao(tr_id):
         return jsonify({"error": "Transação não encontrada!"}), 404
 
     # se a transação não for do utilizador que a criou ou se o mesmo não for o Administrador
-    if transacao["utilizadorId"] != user_id or perfil != "Administrador":
+    if transacao["utilizadorId"] != user_id and perfil != "Administrador":
         return (
             jsonify({"error": "Não tem permissão para atualizar esta transação!"}),
             403,
@@ -170,7 +170,7 @@ def update_transacao(tr_id):
 
 
 # Apagar
-@transacoes_bp.route("/transacoes/delete/<int:tr_id>", methods=["DELETE"])
+@transacoes_bp.route("/transacoes/delete/<string:tr_id>", methods=["DELETE"])
 @jwt_required()
 def delete_transaction(tr_id):
     identity = json.loads(get_jwt_identity())

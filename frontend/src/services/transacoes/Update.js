@@ -4,7 +4,7 @@ import FetchCategorias from "../categorias/fetch";
 import FetchTransacaoById from "./fetch_by_id";
 
 export default function UpdateTransacao() {
-  const { items } = FetchCategorias();
+  const { categorias } = FetchCategorias();
   const {
     id,
     descricao,
@@ -103,7 +103,7 @@ export default function UpdateTransacao() {
             required
           >
             <option value="">Selecionar opção</option>
-            {items?.map((data) => (
+            {categorias?.map((data) => (
               <option key={data.id} value={data.nome}>
                 {data.nome}
               </option>

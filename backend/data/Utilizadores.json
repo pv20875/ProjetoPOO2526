@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "f2b6dbf6-1e9c-43f2-9ad0-29538901c9cf",
+    "nome": "R\u00faben Gomes",
+    "email": "admin@admin.com",
+    "password": "$2b$12$w26j/t6VMScX5kvOPWax8usw9fkFXtl9ATJEAQptTwzQNDOeOhQ1G",
+    "perfil": "Administrador"
+  },
+  {
+    "id": "366e3f6c-52c1-4461-bf4e-142fe115b494",
+    "nome": "Joana Costa",
+    "email": "joana@mail.com",
+    "password": "$2b$12$toLWLDjCaIfaqnxOn5J/seVQ7VYprROJ96IsWPFsz8L4SG9LiAfvO",
+    "perfil": "Comum"
+  },
+  {
+    "id": "4189a30d-98d4-496b-ad10-229851bbf8d1",
+    "nome": "Utilizador Teste",
+    "email": "email@email.com",
+    "password": "$2b$12$k.rlPeKLEygRJHrQgvtNSen/I/HVt28WUH.J.K3bQxX/OCjj2XB7C",
+    "perfil": "Comum"
+  }
+]

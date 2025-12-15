@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "91b8a0ab-cb53-432e-8efd-05c482b5fcab",
+    "nome": "Inform\u00e1tica",
+    "descricao": "Computadores"
+  },
+  {
+    "id": "a2d5f448-7c18-49f7-8aa7-b726aa757ba3",
+    "nome": "Rendas",
+    "descricao": "Casas e apartamentos"
+  },
+  {
+    "id": "7f0e85c7-4cc3-4201-a2f2-2070d74d4780",
+    "nome": "Propinas",
+    "descricao": "IPV"
+  },
+  {
+    "id": "e97e8c98-7974-4cde-a1dd-5e7d0f2c5708",
+    "nome": "Jogos",
+    "descricao": "Todo o tipo"
+  },
+  {
+    "id": "f2561c9f-4ff5-465a-b5da-268b39912726",
+    "nome": "Vendas",
+    "descricao": "OLX, Wallapop e etc"
+  },
+  {
+    "id": "c8684287-683c-4881-855c-3e0e0982934f",
+    "nome": "teste",
+    "descricao": "teste"
+  }
+]
